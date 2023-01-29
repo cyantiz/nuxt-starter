@@ -1,17 +1,47 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { resolve } from 'path'
+import { resolve } from "path"
 
 export default defineNuxtConfig({
     ssr: true,
-    css: ['@/assets/css/main.less'],
+    modules: ["nuxt-icon"],
+    css: ["@/assets/css/main.less"],
     postcss: {
         plugins: {
-            tailwindcss: {},
+            tailwindcss: {
+                config: resolve(__dirname, "tailwind.config.ts"),
+            },
             autoprefixer: {},
         },
     },
+
     alias: {
         "@@": resolve(__dirname, "pages"),
         "~~": resolve(__dirname, "components"),
-    }
+    },
+    app: {
+        head: {
+            meta: [{ name: "naive-ui-style" }, { name: "vueuc-style" }],
+        },
+    },
+
+    // naive ui config for ssr
+    build: {
+        transpile:
+            process.env.NODE_ENV === "production"
+                ? [
+                      "naive-ui",
+                      "vueuc",
+                      "@css-render/vue3-ssr",
+                      "@juggle/resize-observer",
+                  ]
+                : ["@juggle/resize-observer"],
+    },
+    vite: {
+        optimizeDeps: {
+            include:
+                process.env.NODE_ENV === "development"
+                    ? ["naive-ui", "vueuc", "date-fns-tz/esm/formatInTimeZone"]
+                    : [],
+        },
+    },
 })
