@@ -3,8 +3,23 @@ import { resolve } from "path"
 
 export default defineNuxtConfig({
     ssr: true,
-    modules: ["nuxt-icon"],
+    
+    modules: [
+        "nuxt-icon",
+        [
+            "@pinia/nuxt",
+            {
+                autoImports: [
+                    // automatically imports `defineStore`
+                    "defineStore", // import { defineStore } from 'pinia'
+                    // automatically imports `defineStore` as `definePiniaStore`
+                    ["defineStore", "definePiniaStore"], // import { defineStore as definePiniaStore } from 'pinia'
+                ],
+            },
+        ],
+    ],
     css: ["@/assets/css/main.less"],
+
     postcss: {
         plugins: {
             tailwindcss: {
@@ -18,6 +33,7 @@ export default defineNuxtConfig({
         "@@": resolve(__dirname, "pages"),
         "~~": resolve(__dirname, "components"),
     },
+
     app: {
         head: {
             meta: [{ name: "naive-ui-style" }, { name: "vueuc-style" }],
@@ -36,6 +52,7 @@ export default defineNuxtConfig({
                   ]
                 : ["@juggle/resize-observer"],
     },
+
     vite: {
         optimizeDeps: {
             include:

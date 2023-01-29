@@ -19,7 +19,12 @@
   },
   "dependencies": {
     "@css-render/vue3-ssr": "^0.15.12",
+    "@pinia/nuxt": "^0.4.6",
     "naive-ui": "^2.34.3",
+    "pinia": "^2.0.29",
     "vfonts": "^0.0.3"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }

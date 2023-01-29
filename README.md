@@ -4,17 +4,19 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 
 ## Setup
 
+Please use Node version 18.13.0.
+
+```bash
+nvm install 18.13.0
+
+nvm use 18.13.0
+```
+
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
 # npm
 npm install
-
-# pnpm
-pnpm install
 ```
 
 ## Development Server

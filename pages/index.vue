@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { NButton, NInput } from 'naive-ui';
+import { NButton } from 'naive-ui';
+import { useCounterStore } from '~/store/counter';
 defineProps<{}>();
-const text = ref("")
 
-const alertText = () => {
-    alert(text.value)
-}
+const counter = useCounterStore();
+const increment = () => counter.increment();
 </script>
 
 
 <template>
-    <div class="text-3xl p-4">hello, there's nothing here yet</div>
-    <div class="p-4 w-96 flex flex-col items-start gap-2 test-area">
-        <n-input placeholder="test input" v-model:value="text"></n-input>
-        <n-button @click="alertText">Submit</n-button> 
-    </div>
+    <div class="mx-auto flex flex-col items-center">
+        <div class="text-3xl p-4 text-center">Nuxt 3 + NaiveUI + Tailwind + Pinia</div>
+    
+            <n-button @click="increment">Count: {{ counter.$state.count }}</n-button> 
+    </div> 
 </template>
 
 <style lang="less" scoped>
