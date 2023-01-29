@@ -1,5 +1,5 @@
 export const useCounterStore = defineStore({
-    id: "counter",
+    id: 'counter',
     state: () => {
         return {
             count: 0,
@@ -8,10 +8,8 @@ export const useCounterStore = defineStore({
     actions: {
         increment() {
             this.count++
-        }
+        },
     },
 
-    getters: {
-        
-    },
+    getters: {},
 })
