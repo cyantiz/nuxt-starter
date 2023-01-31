@@ -4,6 +4,7 @@ import { useCounterStore } from '~/store/counter'
 defineProps<{}>()
 
 const counter = useCounterStore()
+
 const increment = () => counter.increment()
 </script>
 
@@ -16,6 +17,8 @@ const increment = () => counter.increment()
         <n-button @click="increment">
             Count: {{ counter.$state.count }}
         </n-button>
+
+        <draggable-box />
     </div>
 </template>
 

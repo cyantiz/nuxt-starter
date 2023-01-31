@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     ssr: true,
     modules: [
         'nuxt-icon',
+        '@vueuse/nuxt',
         [
             '@pinia/nuxt',
             {
@@ -21,9 +22,7 @@ export default defineNuxtConfig({
 
     postcss: {
         plugins: {
-            tailwindcss: {
-                config: resolve(__dirname, 'tailwind.config.ts'),
-            },
+            tailwindcss: {},
             autoprefixer: {},
         },
     },
